@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shasha Tours & Travels</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- <link rel="shortcut icon" href="Logo.png" type="image/x-icon" /> -->
+    <style>
+/* General Reset and Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: linear-gradient(to right, #371375, #00bcd4);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+/* LOGO SECTION */
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.logo-img {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-text h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: white;
+    line-height: 1.2;
+}
+
+.logo-text p {
+    font-size: 1rem;
+    margin: 2px 0 0;
+    color: #ddd;
+}
+
+/* Header Actions: Button + Menu Toggle */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Button Styling */
+.btn, #loginBtn, #registerBtn {
+    background-color: #ffcc00;
+    color: #0044cc;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover, #loginBtn:hover, #registerBtn:hover {
+    background-color: #e0a800;
+}
+
+/* NAVIGATION */
+header nav {
+    position: relative;
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #282829;
+    z-index: 998;
+}
+
+header nav.active {
+    display: block;
+}
+
+header nav ul {
+    list-style: none;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header nav ul li {
+    margin: 10px 0;
+}
+
+header nav ul li a {
+    font-size: 1.2rem;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* HAMBURGER MENU */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 999;
+    position: relative;
+}
+
+.menu-toggle span {
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+}
+
+/* DESKTOP NAV OPTION */
+@media (min-width: 768px) {
+    header nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #282829;
+    }
+
+    header nav.active {
+        display: block;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+}
+
+/* Logo layout and header actions for small screens */
+@media (max-width: 480px) {
+    header .logo {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .logo-img {
+        height: 50px;
+    }
+
+    .logo-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .logo-text p {
+        font-size: 0.9rem;
+    }
+
+    .header-actions {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .menu-toggle {
+        margin-top: 10px;
+        align-self: center;
+    }
+}
+
+/* Home Section */
+.intro {
+    background: linear-gradient(to right, #a75224, #b87e29);
+    color: white;
+    padding: 100px;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.intro h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.intro .btn {
+    padding: 10px 20px;
+    background-color: #0044cc;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.intro .btn:hover {
+    background-color: #003399;
+}
+
+/* National Tours Section */
+.services {
+    padding: 50px 20px;
+    text-align: center;
+    background: linear-gradient(to right, #a75224, #b87e29);
+    margin-bottom: 8px;
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.services-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    width: 30%;
+    margin: 10px 0;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: pop-up 0.5s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* Buses Section */
+.transport {
+    background: linear-gradient(to right, #171a69, #169273);
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.transport h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: rgb(219, 199, 176);
+}
+
+.transport-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.transport-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 30%;
+    margin: 10px 0;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: pop-up 0.5s ease-out forwards;
+    animation-delay: 0.4s;
+}
+
+/* Common Card Styles */
+@keyframes pop-up {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.service-card img,
+.transport-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.transport-card img {
+    height: 230px;
+}
+
+.service-card h3,
+.transport-card h3 {
+    margin: 20px 0;
+}
+
+.service-card p,
+.transport-card p {
+    font-size: 1rem;
+}
+
+.service-card:hover img,
+.transport-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Contact Section */
+.contact {
+    background: linear-gradient(to right, #0044cc, #00bcd4);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact input,
+.contact textarea {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+
+/* Success Message */
+.form-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px 20px;
+    margin-top: 15px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* Error Message */
+.form-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px 20px;
+    margin-top: 15px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hidden Utility Class */
+.hidden {
+    display: none;
+}
+
+
+
+.contact button {
+    padding: 10px;
+    background-color: #ffcc00;
+    color: #0044cc;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.contact button:hover {
+    background-color: #e0a800;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px 20px;
+    margin-top: 15px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 1px;
+}
+
+.footer-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.footer-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    text-align: center;
+    animation: popUp 0.4s ease;
+}
+
+@keyframes popUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-content input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.modal-content .btn {
+    background-color: #0044cc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.booking-alert {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    border: 1px solid #ffeeba;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.booking-alert span {
+    font-weight: bold;
+    color: #333;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Vehicles Modal */
+#vehiclesModal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.vehicles-gallery {
+    background-color: #fff;
+    margin: 80px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 8px;
+    position: relative;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    width: 200px;
+    height: 150px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.hover-text {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    width: 100%;
+    padding: 5px 0;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gallery-item:hover .hover-text {
+    opacity: 1;
+}
+
+/* Responsive Cards Stacking */
+@media (max-width: 768px) {
+    .services-container,
+    .transport-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card,
+    .transport-card {
+        width: 90%;
+    }
+}
+html {
+  scroll-behavior: smooth;
+}
+.contact-error,
+.register-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <img src="Logo.png" alt="Shasha Logo" class="logo-img" />
+        <div class="logo-text">
+          <h1>Shasha Tours & Travels</h1>
+          <p>Embark on the adventure of a lifetime</p>
+        </div>
+      </div>
+
+      <!-- Header actions -->
+      <div class="header-actions">
+        <button class="btn" id="registerBtn">Register</button>
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- Toggle Menu -->
+      <nav id="navbar">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#tours">National Tours</a></li>
+          <li><a href="#" id="vehiclesBtn">Vehicles</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#" id="aboutUsLink">About Us</a></li>
+          <li><a href="#" id="termsLink">Terms & Conditions</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Home -->
+    <section id="home" class="intro">
+      <div class="intro-content">
+        <h2>Explore the Best National Tours with Shasha Tours & Travels</h2>
+        <p>
+          Where will your dreams take you? Explore your perfect destination with
+          a simple click!
+        </p>
+        <a href="#tours" class="btn">Explore Tours</a>
+      </div>
+    </section>
+
+    <!-- Tours -->
+    <section id="tours" class="services">
+      <h2>Our Popular National Tours</h2>
+      <div class="services-container">
+        <div class="service-card">
+          <img src="Tour 1.jpg" alt="Tour 1" />
+          <h3>Mountain Adventures</h3>
+          <p>Experience the thrill of the highest peaks.</p>
+        </div>
+        <div class="service-card">
+          <img src="tour 2.webp" alt="Tour 2" />
+          <h3>Beach Holidays</h3>
+          <p>Relax at the best beaches across the country.</p>
+        </div>
+        <div class="service-card">
+          <img src="tour 3.jpg" alt="Tour 3" />
+          <h3>Cultural Heritage</h3>
+          <p>Discover the rich history and culture of our land.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buses -->
+    <section id="buses" class="transport">
+      <h2>Comfortable Bus Journeys</h2>
+      <div class="transport-container">
+        <div class="transport-card">
+          <img src="Bus1.jpg" alt="Bus 1" />
+          <h3>Luxury Buses</h3>
+          <p>Travel in comfort and style on our premium buses.</p>
+        </div>
+        <div class="transport-card">
+          <img src="Bus 2.webp" alt="Bus 2" />
+          <h3>Economy Buses</h3>
+          <p>Affordable and comfortable buses for every budget.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cars -->
+    <section id="cars" class="transport">
+      <h2>Rent a Car for Your Journey</h2>
+      <div class="transport-container">
+        <div class="transport-card">
+          <img src="Car 2.webp" alt="Car 1" />
+          <h3>Luxury Cars</h3>
+          <p>Drive in style with our luxury car options.</p>
+        </div>
+        <div class="transport-card">
+          <img src="Car 1.webp" alt="Car 2" />
+          <h3>Well Defined Interiors</h3>
+          <p>Affordable and reliable cars for your travels.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Alert -->
+    <div class="booking-alert">
+      Bookings will open soon ! <span id="registerLink">Register now</span>
+      <p>(Early Registrations can get up to 60% off on bookings !)</p>
+    </div>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <h2>Contact Us</h2>
+      <p>Have questions? Feel free to reach out!</p>
+      <form id="contact-form" action="#">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+      <div id="contact-error" class="form-error"></div>
+      <div id="form-success" class="form-success hidden">Message sent successfully!</div>      
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-logo-container">
+        <img src="logo.png" alt="Shasha Tours Logo" class="footer-logo" />
+      </div>
+      <p>
+        For enquiries reach us at
+        <a href="mailto:info@shashatours.com">info@shashatours.com</a>
+      </p>
+      <p>Customer support available 24/7</p>
+      <p>&copy; 2025 Shasha Tours & Travels. All rights reserved.</p>
+    </footer>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Register</h2>
+        <form id="register-form">
+          <input type="text" placeholder="Full Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <input type="password" placeholder="Confirm Password" required />
+          <button class="btn" type="submit">Register</button>
+        </form>
+        <div id="register-error" class="form-error"></div>
+<div id="register-success" class="form-success hidden">Registered successfully!</div>
+
+      </div>
+    </div>
+
+    <!-- About Us Modal -->
+    <div id="aboutUsModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeAboutUs">&times;</span>
+        <h2>About Us</h2>
+        <p>
+          Shasha Tours & Travels is dedicated to providing unforgettable travel
+          experiences across the country. Our mission is to ensure every journey
+          is safe, comfortable, and full of wonderful memories. We prioritize
+          the safety and satisfaction of our tourists above all else, employing
+          modern vehicles and experienced guides. Your peace of mind is our top
+          priority, and we leave no stone unturned in delivering dependable
+          services.
+        </p>
+        <br />
+        <h3>Owner’s Remark</h3>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+          "
+        >
+          <img
+            src="WhatsApp Image 2025-04-06 at 14.05.53_74e98bfa.jpg"
+            alt="Owner"
+            style="
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+              object-fit: cover;
+            "
+          />
+          <p style="margin: 0; font-style: italic">
+            "At Shasha Tours & Travels, our top priority has always been the
+            safety, comfort, and unforgettable experience of our travelers.
+            Every journey we plan is handled with care, precision, and a deep
+            understanding of our passengers' needs. We’re not just offering
+            transportation—we're crafting memories, building trust, and
+            connecting people to the beauty of this country. Our team is
+            committed to making sure that from the first click to the final
+            destination, you feel valued, safe, and excited about what lies
+            ahead. We believe that every traveler deserves a journey that's not
+            only scenic but also seamless and stress-free."
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="termsModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeTerms">&times;</span>
+        <h2>Terms & Conditions</h2>
+        <p>
+          By booking with Shasha Tours & Travels, you agree to our terms of
+          service. All trips are subject to availability. Cancellations must be
+          made 48 hours prior to departure for a full refund. Safety protocols
+          must be followed at all times during travel. For more information,
+          please contact our support team.
+        </p>
+      </div>
+    </div>
+
+    <!-- Vehicles Modal Popup -->
+    <div id="vehiclesModal" class="modal">
+      <div class="modal-content vehicles-gallery">
+        <span class="close" id="closeVehicles">&times;</span>
+        <h2>Our Vehicles</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="Vehicle 2.jpg" alt="" />
+            <div class="hover-text"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="Vehicle-4.webp" alt="" />
+            <div class="hover-text"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="Vehicle-10.webp" alt="" />
+            <div class="hover-text"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="Vehicle-6.webp" alt="" />
+            <div class="hover-text"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="Vehicle-12.webp" alt="" />
+            <div class="hover-text"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="Vehicle-11.webp" alt="" />
+            <div class="hover-text"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="Vehicle-8.webp" alt="" />
+            <div class="hover-text"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="Vehicle-13.webp" alt="" />
+            <div class="hover-text"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="Vehicle-9.webp" alt="" />
+            <div class="hover-text"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="Vehicle-7.webp" alt="" />
+            <div class="hover-text"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="Vehicle-14.webp" alt="" />
+            <div class="hover-text"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="Vehicle 1.jpg" alt="" />
+            <div class="hover-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <!-- <script src="script.js"></script> -->
+     <script>
+      // 1. Toggle Navigation Menu (Header)
+document.getElementById('menu-toggle').addEventListener('click', function () {
+    document.getElementById('navbar').classList.toggle('active');
+});
+
+// 2. Register Modal
+const registerBtn = document.getElementById('registerBtn');
+const registerModal = document.getElementById('registerModal');
+const closeModal = document.getElementById('closeModal');
+
+registerBtn.addEventListener('click', () => {
+    registerModal.style.display = 'block';
+});
+closeModal.addEventListener('click', () => {
+    registerModal.style.display = 'none';
+});
+window.addEventListener('click', (event) => {
+    if (event.target === registerModal) {
+        registerModal.style.display = 'none';
+    }
+});
+
+// Registration Form Validation & Success
+document.getElementById('register-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const inputs = this.querySelectorAll('input');
+    const name = inputs[0].value.trim();
+    const email = inputs[1].value.trim();
+    const password = inputs[2].value;
+    const confirmPassword = inputs[3].value;
+
+    const errorDiv = document.getElementById('register-error');
+    const successDiv = document.getElementById('register-success');
+
+    errorDiv.classList.add('hidden');
+    successDiv.classList.add('hidden');
+
+    if (!name || !email || !password || !confirmPassword) {
+        errorDiv.textContent = 'All fields are required.';
+        errorDiv.classList.remove('hidden');
+        return;
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+        errorDiv.textContent = 'Please enter a valid email address.';
+        errorDiv.classList.remove('hidden');
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        errorDiv.textContent = 'Passwords do not match.';
+        errorDiv.classList.remove('hidden');
+        return;
+    }
+
+    errorDiv.classList.add('hidden');
+    successDiv.classList.remove('hidden');
+
+    setTimeout(() => {
+        successDiv.classList.add('hidden');
+        registerModal.style.display = 'none';
+        this.reset();
+    }, 2000);
+});
+
+// 3. About Us Modal
+const aboutLink = document.getElementById('aboutUsLink');
+const aboutModal = document.getElementById('aboutUsModal');
+const closeAbout = document.getElementById('closeAboutUs');
+
+aboutLink.addEventListener('click', () => {
+    aboutModal.style.display = 'block';
+});
+closeAbout.addEventListener('click', () => {
+    aboutModal.style.display = 'none';
+});
+window.addEventListener('click', (event) => {
+    if (event.target === aboutModal) {
+        aboutModal.style.display = 'none';
+    }
+});
+
+// 4. Terms and Conditions Modal
+const termsLink = document.getElementById('termsLink');
+const termsModal = document.getElementById('termsModal');
+const closeTerms = document.getElementById('closeTerms');
+
+termsLink.addEventListener('click', () => {
+    termsModal.style.display = 'block';
+});
+closeTerms.addEventListener('click', () => {
+    termsModal.style.display = 'none';
+});
+window.addEventListener('click', (event) => {
+    if (event.target === termsModal) {
+        termsModal.style.display = 'none';
+    }
+});
+
+// 5. Booking Alert Register Link
+const registerLink = document.getElementById('registerLink');
+registerLink.addEventListener('click', () => {
+    registerModal.style.display = 'block';
+});
+
+// 6. Contact Form Validation & Success
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = this.querySelector('input[type="text"]').value.trim();
+    const email = this.querySelector('input[type="email"]').value.trim();
+    const message = this.querySelector('textarea').value.trim();
+
+    const errorDiv = document.getElementById('contact-error');
+    const successDiv = document.getElementById('form-success');
+
+    errorDiv.classList.add('hidden');
+    successDiv.classList.add('hidden');
+
+    if (!name || !email || !message) {
+        errorDiv.textContent = 'All fields are required.';
+        errorDiv.classList.remove('hidden');
+        return;
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+        errorDiv.textContent = 'Please enter a valid email address.';
+        errorDiv.classList.remove('hidden');
+        return;
+    }
+
+    errorDiv.classList.add('hidden');
+    successDiv.classList.remove('hidden');
+
+    setTimeout(() => {
+        successDiv.classList.add('hidden');
+        this.reset();
+    }, 2000);
+});
+
+// 7. Vehicles Gallery Modal
+document.getElementById("vehiclesBtn").addEventListener("click", function (e) {
+    e.preventDefault();
+    document.getElementById("vehiclesModal").style.display = "block";
+});
+document.getElementById("closeVehicles").addEventListener("click", function () {
+    document.getElementById("vehiclesModal").style.display = "none";
+});
+window.addEventListener("click", function (event) {
+    const modal = document.getElementById("vehiclesModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+// 8. Smooth scroll and close menu after clicking a link
+document.querySelectorAll('#navbar a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('navbar').classList.remove('active');
+    });
+});
+
+     </script>
+  </body>
+</html>
